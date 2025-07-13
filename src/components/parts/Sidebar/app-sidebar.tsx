@@ -9,10 +9,10 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import {
+  BadgeDollarSignIcon,
   HandCoinsIcon,
   Home,
   Inbox,
-  Settings,
   ShoppingBag,
 } from "lucide-react";
 
@@ -38,9 +38,9 @@ const items = [
     icon: HandCoinsIcon,
   },
   {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
+    title: "Pembayaran",
+    url: "/pembayaran",
+    icon: BadgeDollarSignIcon,
   },
 ];
 

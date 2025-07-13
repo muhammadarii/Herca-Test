@@ -25,7 +25,7 @@ export async function GET() {
 
   const grouped = new Map<
     string,
-    { marketing: string; bulan: string; omzet: number }
+    { marketing: string; month: string; omzet: number }
   >();
 
   for (const trx of penjualanData) {
@@ -33,28 +33,28 @@ export async function GET() {
       ? trx.marketing[0]?.name
       : trx.marketing?.name;
 
-    const bulan = formattedMonth(trx.date);
+    const month = formattedMonth(trx.date);
 
-    if (!name || !bulan || !trx.grand_total) continue;
+    if (!name || !month || !trx.grand_total) continue;
 
-    const key = `${name}-${bulan}`;
+    const key = `${name}-${month}`;
 
     if (!grouped.has(key)) {
-      grouped.set(key, { marketing: name, bulan, omzet: 0 });
+      grouped.set(key, { marketing: name, month, omzet: 0 });
     }
 
     grouped.get(key)!.omzet += trx.grand_total;
   }
 
   const result = Array.from(grouped.values()).map((item) => {
-    const persen = getKomisiPersen(item.omzet);
-    const nominal = Math.round(item.omzet * (persen / 100));
+    const percentage = getKomisiPersen(item.omzet);
+    const nominal = Math.round(item.omzet * (percentage / 100));
     return {
       marketing: item.marketing,
-      bulan: item.bulan,
+      month: item.month,
       omzet: item.omzet,
-      komisiPersen: `${persen}%`,
-      komisiNominal: nominal,
+      percentage_commission: `${percentage}%`,
+      nominal_commission: nominal,
     };
   });
 

@@ -8,7 +8,7 @@ import { ArrowUpDown } from "lucide-react";
 export const PenjualanColumns: ColumnDef<Penjualan>[] = [
   {
     accessorKey: "id",
-    header: () => <div className="text-left">ID</div>,
+    header: () => <div>ID</div>,
   },
   {
     accessorKey: "transaction_number",
@@ -26,15 +26,15 @@ export const PenjualanColumns: ColumnDef<Penjualan>[] = [
   },
   {
     accessorKey: "marketing.name",
-    header: () => <div className="text-left">Name</div>,
+    header: () => <div>Name</div>,
   },
   {
     accessorKey: "date",
-    header: () => <div className="text-left">Date</div>,
+    header: () => <div>Date</div>,
   },
   {
     accessorKey: "cargo_fee",
-    header: () => <div className="text-left">Cargo Fee</div>,
+    header: () => <div>Cargo Fee</div>,
     cell: ({ row }) => {
       const value = row.getValue("grand_total");
       const formatted = new Intl.NumberFormat("id-ID", {
@@ -42,12 +42,12 @@ export const PenjualanColumns: ColumnDef<Penjualan>[] = [
         currency: "IDR",
         minimumFractionDigits: 0,
       }).format(Number(value));
-      return <div className="text-left">{formatted}</div>;
+      return <div>{formatted}</div>;
     },
   },
   {
     accessorKey: "total_balance",
-    header: () => <div className="text-left">Total Balance</div>,
+    header: () => <div>Total Balance</div>,
     cell: ({ row }) => {
       const value = row.getValue("grand_total");
       const formatted = new Intl.NumberFormat("id-ID", {
@@ -55,12 +55,12 @@ export const PenjualanColumns: ColumnDef<Penjualan>[] = [
         currency: "IDR",
         minimumFractionDigits: 0,
       }).format(Number(value));
-      return <div className="text-left">{formatted}</div>;
+      return <div>{formatted}</div>;
     },
   },
   {
     accessorKey: "grand_total",
-    header: () => <div className="text-left">Grand Total</div>,
+    header: () => <div>Grand Total</div>,
     cell: ({ row }) => {
       const value = row.getValue("grand_total");
       const formatted = new Intl.NumberFormat("id-ID", {
@@ -68,12 +68,12 @@ export const PenjualanColumns: ColumnDef<Penjualan>[] = [
         currency: "IDR",
         minimumFractionDigits: 0,
       }).format(Number(value));
-      return <div className="text-left">{formatted}</div>;
+      return <div>{formatted}</div>;
     },
   },
   {
     accessorKey: "created_at",
-    header: () => <div className="text-left">Created At</div>,
+    header: () => <div>Created At</div>,
     cell: ({ row }) => {
       const formattedDate = new Date(row.getValue("created_at")).toLocaleString(
         "en-US",
@@ -86,7 +86,7 @@ export const PenjualanColumns: ColumnDef<Penjualan>[] = [
         }
       );
 
-      return <div className="text-left">{formattedDate}</div>;
+      return <div>{formattedDate}</div>;
     },
   },
 ];

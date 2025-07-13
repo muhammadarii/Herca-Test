@@ -16,7 +16,7 @@ export const KomisiColumns: ColumnDef<Marketing>[] = [
     header: () => <div>Marketing</div>,
   },
   {
-    accessorKey: "bulan",
+    accessorKey: "month",
     header: () => <div>Month</div>,
   },
   {
@@ -34,14 +34,14 @@ export const KomisiColumns: ColumnDef<Marketing>[] = [
     },
   },
   {
-    accessorKey: "komisiPersen",
-    header: () => <div>Komisi Persen</div>,
+    accessorKey: "percentage_commission",
+    header: () => <div>Percetage Commission</div>,
   },
   {
-    accessorKey: "komisiNominal",
-    header: () => <div>Komisi Nominal</div>,
+    accessorKey: "nominal_commission",
+    header: () => <div>Nominal Commission</div>,
     cell: ({ row }) => {
-      const value = row.getValue("komisiNominal");
+      const value = row.getValue("nominal_commission");
       const formatted = new Intl.NumberFormat("id-ID", {
         style: "currency",
         currency: "IDR",
