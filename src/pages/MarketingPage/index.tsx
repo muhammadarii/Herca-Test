@@ -1,16 +1,11 @@
 "use client";
 import { MarketingColumns } from "@/components/parts/Table/Column/MarketingColumns";
 import { DataTable } from "@/components/parts/Table/data-table";
-import { fetchMarketing } from "@/lib/api/marketing";
-import { useQuery } from "@tanstack/react-query";
+import { useGetMarketing } from "@/hooks/mutations/marketing";
 import React from "react";
 
 const MarketingPage = () => {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["marketing"],
-    queryFn: fetchMarketing,
-  });
-
+  const { data, isLoading, error } = useGetMarketing();
   const body = data?.data;
 
   if (isLoading) return <p>Loading...</p>;

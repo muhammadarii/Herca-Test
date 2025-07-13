@@ -1,23 +1,7 @@
 "use client";
 
+import { Penjualan } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
-import { Timestamp } from "next/dist/server/lib/cache-handlers/types";
-
-export type Penjualan = {
-  id: string;
-  transaction_number: string;
-  date: Date;
-  cargo_fee: number;
-  total_balance: number;
-  marketing: marketing;
-  created_at: Timestamp;
-};
-
-type marketing = {
-  id: string;
-  name: string;
-  created_at: Timestamp;
-};
 
 export const PenjualanColumns: ColumnDef<Penjualan>[] = [
   {
@@ -39,10 +23,41 @@ export const PenjualanColumns: ColumnDef<Penjualan>[] = [
   {
     accessorKey: "cargo_fee",
     header: () => <div className="text-left">Cargo Fee</div>,
+    cell: ({ row }) => {
+      const value = row.getValue("grand_total");
+      const formatted = new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0,
+      }).format(Number(value));
+      return <div className="text-left">{formatted}</div>;
+    },
   },
   {
     accessorKey: "total_balance",
     header: () => <div className="text-left">Total Balance</div>,
+    cell: ({ row }) => {
+      const value = row.getValue("grand_total");
+      const formatted = new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0,
+      }).format(Number(value));
+      return <div className="text-left">{formatted}</div>;
+    },
+  },
+  {
+    accessorKey: "grand_total",
+    header: () => <div className="text-left">Grand Total</div>,
+    cell: ({ row }) => {
+      const value = row.getValue("grand_total");
+      const formatted = new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0,
+      }).format(Number(value));
+      return <div className="text-left">{formatted}</div>;
+    },
   },
   {
     accessorKey: "created_at",

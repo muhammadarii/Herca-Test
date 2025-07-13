@@ -31,14 +31,10 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   const body = await request.json();
 
-  const {
-    transaction_number,
-    marketing_id,
-    date,
-    cargo_fee,
-    total_balance,
-    grand_total,
-  } = body;
+  const { transaction_number, marketing_id, date, cargo_fee, total_balance } =
+    body;
+
+  const grand_total = Number(cargo_fee) + Number(total_balance);
 
   const { data, error } = await supabase
     .from("penjualan")
@@ -68,6 +64,7 @@ export async function POST(request: NextRequest) {
     {
       message: "Penjualan berhasil ditambahkan",
       data: data,
+      success: true,
     },
     { status: 201 }
   );
