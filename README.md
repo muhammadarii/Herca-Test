@@ -4,7 +4,6 @@
 - [Supabase](https://supabase.com/)
 - [ShadCN UI](https://ui.shadcn.com/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [PostgreSQL](https://www.postgresql.org/)
 
 ## 🛠️ Cara Install
 
