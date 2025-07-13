@@ -1,7 +1,9 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { Penjualan } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
+import { ArrowUpDown } from "lucide-react";
 
 export const PenjualanColumns: ColumnDef<Penjualan>[] = [
   {
@@ -10,7 +12,17 @@ export const PenjualanColumns: ColumnDef<Penjualan>[] = [
   },
   {
     accessorKey: "transaction_number",
-    header: () => <div className="text-left">Transaction Number</div>,
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Transaction Number
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
   },
   {
     accessorKey: "marketing.name",

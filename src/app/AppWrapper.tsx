@@ -1,5 +1,5 @@
 import { AppSidebar } from "@/components/parts/Sidebar/app-sidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { cookies } from "next/headers";
 import { Providers } from "./providers";
 
@@ -20,7 +20,7 @@ const AppWrapper = async ({
 
           {/* Main content */}
           <main className="flex-1">
-            <SidebarTrigger className="md:hidden" />
+            {/* <SidebarTrigger /> */}
             <div className="p-4">{children}</div>
           </main>
         </div>

@@ -8,7 +8,13 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Home, Inbox, Search, Settings, ShoppingBag } from "lucide-react";
+import {
+  HandCoinsIcon,
+  Home,
+  Inbox,
+  Settings,
+  ShoppingBag,
+} from "lucide-react";
 
 const items = [
   {
@@ -27,9 +33,9 @@ const items = [
     icon: ShoppingBag,
   },
   {
-    title: "Search",
-    url: "#",
-    icon: Search,
+    title: "Komisi",
+    url: "/komisi",
+    icon: HandCoinsIcon,
   },
   {
     title: "Settings",
